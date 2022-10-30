@@ -39,6 +39,12 @@ const DropBox: React.FC<{}> = () => {
     }
   };
 
+  const onRemoveFile = (index: number) => {
+    const newFileArray = files.filter((item, indexID) => indexID !== index);
+    console.log(newFileArray);
+    setFiles(newFileArray);
+  };
+
   const onSubmit = () => {
     if (files.length === 0) {
       alert("Please upload files");
@@ -88,7 +94,7 @@ const DropBox: React.FC<{}> = () => {
               disabled={isLoader ? true : false}
             ></input>
             <div className="fileInoutPlaceholder fileInputText">
-              Drop your file here
+              <i className="fa fa-upload uploadIcon" /> Drop your files here
             </div>
           </div>
           <div className="fileList">
@@ -96,7 +102,22 @@ const DropBox: React.FC<{}> = () => {
               files.map((file: File, index: number) => {
                 return (
                   <div className="fileListName" key={index}>
-                    {file.name}
+                    <div className="fileNameContainer">
+                      <i
+                        className="fa fa-file fileIcon"
+                        onClick={() => {
+                          onRemoveFile(index);
+                        }}
+                      />
+                      {file.name}
+                    </div>
+
+                    <i
+                      className="fa fa-trash removeIcon"
+                      onClick={() => {
+                        onRemoveFile(index);
+                      }}
+                    />
                   </div>
                 );
               })
@@ -117,15 +138,14 @@ const DropBox: React.FC<{}> = () => {
               setCustodianName(e.target.value);
             }}
           />
+
           <button className="button" onClick={onSubmit}>
             Submit
           </button>
         </div>
       </div>
 
-      <div
-        className={"profileCards"}
-      >
+      <div className={"profileCards"}>
         {custodians.map((cust) => {
           return (
             <ProfileCard

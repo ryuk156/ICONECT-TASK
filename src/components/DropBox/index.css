@@ -44,7 +44,7 @@
   align-items: center;
   cursor: pointer;
 }
-.dragOpacity{
+.dragOpacity {
   opacity: 0.5;
 }
 .fileInoutPlaceholder {
@@ -69,15 +69,37 @@
 }
 
 .fileListName {
-  border: 4px solid blue;
+  border: 4px solid #39a0ed;
   margin: 8px;
   border-radius: 10px;
   padding: 10px;
   width: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fileIcon {
+  margin-right: 8px;
+  color: #247ba0;
+  font-size: 20px;
+}
+
+.removeIcon {
+  margin-right: 8px;
+  color: #ff1654;
+  font-size: 20px;
 }
 
 .fileInputText {
   color: rgb(102, 93, 93);
+  font-size: 20px;
+  color: #383868;
+  font-weight: 600;
+}
+
+.uploadIcon {
+  color: #2c2c54;
+  font-size: 20px;
 }
 
 .secondarycontainer {
@@ -98,13 +120,12 @@
   border-radius: 10px;
 }
 
-
-.profileCards{
+.profileCards {
   flex-grow: 1;
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  flex-direction: column
+  flex-direction: column;
 }

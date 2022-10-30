@@ -7,10 +7,15 @@ const ProfileCard: React.FC<CustodianType> = ({
 }) => {
   return (
     <div className="profileCardContainer">
-      <div className="profileName">Custodian Name: {custodianName}</div>
+      <b> Custodian Name</b>
+      <div className="profileName">{custodianName}</div>
       <div className="fileHeader"> Uploaded files</div>
       {custodianFiles.map((custodianFile: File, index: number) => {
-        return <div className="fileName" key={index}>{custodianFile.name}</div>;
+        return (
+          <div className="fileName" key={index}>
+            <i className="fa fa-file fileIcon" /> {custodianFile.name}
+          </div>
+        );
       })}
     </div>
   );
