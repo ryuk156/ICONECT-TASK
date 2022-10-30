@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+Create a React Component that acts as a dropzone for the user to upload files.
+ The user should be able to click to upload files or drag and drop files onto the component
+ Once the user selects some files, the component should switch to show them an input for
+Custodian and a submit button.
+ When the user clicks submit, the component should show a progress bar indicating the
+status of the files uploading. Actually uploading the files to a server is not required, but the
+component should ‘Mock’ the time it takes for each file to upload so that the progress bar
+shows progress.
+ While files are uploading, the user should be able to drop in another set of files and enter
+another Custodian name, allowing for multiple ‘batches’ of simultaneous uploads.
+ Create the component using jsfiddle.net, jsbin.com or a similar utility so we can eaily read
+the source code and view the final product
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+1. Access it on with editor and live preview
+    GitPod: 
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. if the above does not work try locally  cloning repository
+    i. cd ```./dropzone```
+    ii. cd ```npm install```
+    iii. cd ```npm start```
