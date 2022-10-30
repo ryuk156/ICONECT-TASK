@@ -4,20 +4,34 @@ import ProfileCard from "../ProfileCard";
 import ProgressBar from "../ProgressBar";
 import TextInput from "../TextInput";
 import "./index.css";
+
 const DropBox: React.FC<{}> = () => {
+  //hooks
   const [files, setFiles] = useState<File[]>([]);
   const [filled, setFilled] = useState<number>(0);
-  const [custodian, setCustodian] = useState<CustodianType[]>([]);
+  const [custodians, setCustodians] = useState<CustodianType[]>([]);
   const [custodianName, setCustodianName] = useState<string>("");
   const [isLoader, setIsLoader] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLDivElement>(null);
-  const onDragIn = () =>  {if(fileInputRef.current){fileInputRef.current.classList.add(`dragOpacity`)}};
-
-  const onDragOut = () => {if(fileInputRef.current){fileInputRef.current.classList.remove(`dragOpacity`)}};
-
-  const onDrop = () => {if(fileInputRef.current){fileInputRef.current.classList.remove(`dragOpacity`)}};
-
   const [tempCustodians, setTempCustodians] = useState<CustodianType[]>([]);
+  //drag & drop effect
+  const onDragIn = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.classList.add(`dragOpacity`);
+    }
+  };
+  const onDragOut = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.classList.remove(`dragOpacity`);
+    }
+  };
+  const onDrop = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.classList.remove(`dragOpacity`);
+    }
+  };
+
+  //file upload and data submit
   const onFileUpload = (e: any) => {
     const newFile: File = e.target.files[0];
     if (newFile) {
@@ -26,28 +40,30 @@ const DropBox: React.FC<{}> = () => {
   };
 
   const onSubmit = () => {
-    setIsLoader(true);
-    setTempCustodians([
-      ...tempCustodians,
-      {
-        custodianName: custodianName,
-        custodianFiles: files,
-      },
-    ]);
-    setFiles([]);
-    setCustodianName("");
+    if (files.length === 0) {
+      alert("Please upload files");
+    } else if (custodianName.length === 0) {
+      alert("Please enter custodian name");
+    } else {
+      setIsLoader(true);
+      setTempCustodians([
+        ...tempCustodians,
+        {
+          custodianName: custodianName,
+          custodianFiles: files,
+        },
+      ]);
+      setFiles([]);
+      setCustodianName("");
+    }
   };
-
-  useEffect(() => {
-    console.log(custodian, custodianName);
-  }, [custodian, custodianName]);
 
   useEffect(() => {
     if (filled < 100 && isLoader) {
       setTimeout(() => setFilled((prev) => (prev += 2)), 50);
     } else if (filled === 100) {
       if (filled === 100) {
-        setCustodian(tempCustodians);
+        setCustodians(tempCustodians);
       }
       setFilled(0);
       setIsLoader(false);
@@ -108,15 +124,9 @@ const DropBox: React.FC<{}> = () => {
       </div>
 
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexGrow: 1,
-        }}
         className={"profileCards"}
       >
-        {custodian.map((cust) => {
+        {custodians.map((cust) => {
           return (
             <ProfileCard
               custodianFiles={cust.custodianFiles}
