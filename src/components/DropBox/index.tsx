@@ -10,9 +10,15 @@ const DropBox: React.FC<{}> = () => {
   const [custodian, setCustodian] = useState<CustodianType[]>([]);
   const [custodianName, setCustodianName] = useState<string>("");
   const [isLoader, setIsLoader] = useState<boolean>(false);
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLDivElement>(null);
+  const onDragIn = () =>  {if(fileInputRef.current){fileInputRef.current.classList.add(`dragOpacity`)}};
+
+  const onDragOut = () => {if(fileInputRef.current){fileInputRef.current.classList.remove(`dragOpacity`)}};
+
+  const onDrop = () => {if(fileInputRef.current){fileInputRef.current.classList.remove(`dragOpacity`)}};
+
   const [tempCustodians, setTempCustodians] = useState<CustodianType[]>([]);
-  const onFileUpload = (e:any) => {
+  const onFileUpload = (e: any) => {
     const newFile: File = e.target.files[0];
     if (newFile) {
       setFiles([...files, newFile]);
@@ -52,7 +58,13 @@ const DropBox: React.FC<{}> = () => {
     <>
       <div className="dropboxContainer">
         <div className="fileInputContainer">
-          <div ref={fileInputRef} className="fileInputDropBox">
+          <div
+            ref={fileInputRef}
+            className="fileInputDropBox"
+            onDragEnter={onDragIn}
+            onDragLeave={onDragOut}
+            onDrop={onDrop}
+          >
             <input
               className="fileInput"
               type="file"
