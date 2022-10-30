@@ -18,7 +18,8 @@ Create a React Component that acts as a dropzone for the user to upload files.
 1. Access it on with editor and live preview
    GitPod:
 
-2. if the above does not work try locally cloning repository
+2. if the above does not work try locally cloning repository ```(NodeJS installation Requried)```
+   
    i. cd `./dropzone`
-   ii. cd `npm install`
-   iii. cd `npm start`
+   ii. run in terminal `npm install`
+   iii. run in terminal `npm start`
